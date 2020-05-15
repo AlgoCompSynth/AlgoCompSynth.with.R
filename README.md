@@ -10,12 +10,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 The goal of `algocompsynth` is to provide functions for algorithmic
-music composition and digital sound synthesis in R. The basic libraries
-are already there; see [Sueur, Jérôme (2018), *Sound Analysis and
-Synthesis with R*](https://www.springer.com/us/book/9783319776453).
-`algocompsynth` will extend the packages described there with functions
-to access GPUs via CUDA and OpenCL, functions for multicore parallel
-processing and functions for algorithmic composition.
+music composition and digital sound synthesis in R. `algocompsynth` will
+extend the packages described in [Sueur, Jérôme (2018), *Sound Analysis
+and Synthesis with R*](https://www.springer.com/us/book/9783319776453)
+with functions to access GPUs via CUDA and OpenCL, functions for
+multi-core parallel processing and functions for algorithmic
+composition.
 
 ## Installation
 

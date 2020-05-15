@@ -17,40 +17,20 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/algocompsynth)](https://CRAN.R-project.org/package=algocompsynth)
 <!-- badges: end -->
 
-The goal of algocompsynth is to ...
+The goal of `algocompsynth` is to provide functions for algorithmic music
+composition and digital sound synthesis in R. The basic libraries are already
+there; see [Sueur, Jérôme (2018), _Sound Analysis and Synthesis with R_](https://www.springer.com/us/book/9783319776453). `algocompsynth` will extend
+the packages described there will functions to access GPUs via CUDA and OpenCL,
+functions for multicore parallel processing and functions for algorithmic
+composition.
 
 ## Installation
 
-You can install the released version of algocompsynth from [CRAN](https://CRAN.R-project.org) with:
+You can install `algocompsynth` from
+[GitHub](https://znmeb.github.io/algocompsynth) with:
 
 ``` r
-install.packages("algocompsynth")
+remotes::install_.packages_github("znmeb/algocompsynth")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(algocompsynth)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

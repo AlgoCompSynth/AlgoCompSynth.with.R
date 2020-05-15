@@ -1,0 +1,17 @@
+Package: algocompsynth
+Title: Algorithmic Composition and Synthesis
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "M. Edward (Ed)",
+           family = "Borasky",
+           role = c("aut", "cre"),
+           email = "znmebt@znmeb.net")
+Description: `algocompsynth` is a collection of utilities for algorithmic
+    music composition and digital sound synthesis.
+License: MIT + file LICENSE
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

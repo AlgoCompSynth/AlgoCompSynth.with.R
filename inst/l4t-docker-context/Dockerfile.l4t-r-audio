@@ -66,7 +66,6 @@ ARG HOME=/home/r-audio
 COPY --chown=r-audio:r-audio bash_aliases $HOME/.bash_aliases
 COPY --chown=r-audio:r-audio Rprofile $HOME/.Rprofile
 COPY --chown=r-audio:r-audio Renviron $HOME/.Renviron
-RUN echo "MAKE='make --jobs=$(nproc)'" >> $HOME/.Renviron; cat $HOME/.Renviron
 COPY --chown=r-audio:r-audio Installers $HOME/Installers
 
 # install dependencies for Python and R packages
@@ -91,10 +90,8 @@ RUN $HOME/Installers/pip-installs.bash > $HOME/Installers/pip-installs.log 2>&1;
   gzip -9 $HOME/Installers/pip-installs.log
 
 # install R packages
-RUN $HOME/Installers/R-installs.R > $HOME/Installers/R-installs.log 2>&1; \
+RUN $HOME/Installers/R-installs.bash > $HOME/Installers/R-installs.log 2>&1; \
   gzip -9 $HOME/Installers/R-installs.log
-RUN $HOME/Installers/tinytex.R > $HOME/Installers/tinytex.log 2>&1; \
-  gzip -9 $HOME/Installers/tinytex.log
 
 # switch back to root
 USER root

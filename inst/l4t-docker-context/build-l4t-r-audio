@@ -1,0 +1,4 @@
+#! /bin/bash
+
+/usr/bin/time sudo docker build --tag=znmeb/l4t-r-audio:latest --file=Dockerfile.l4t-r-audio .
+sudo docker images

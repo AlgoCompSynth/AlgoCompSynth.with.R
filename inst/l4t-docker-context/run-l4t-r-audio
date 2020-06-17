@@ -1,0 +1,9 @@
+#! /bin/bash
+
+sudo docker rm r-audio
+sudo docker run --detach \
+  --env RSTATS_PASSWORD=$RSTATS_PASSWORD \
+  --volume=$HOME/Projects:/home/r-audio/Projects \
+  --network host --name r-audio --hostname r-audio \
+  znmeb/l4t-r-audio:latest
+sudo docker cp $HOME/.ssh r-audio:/home/r-audio/

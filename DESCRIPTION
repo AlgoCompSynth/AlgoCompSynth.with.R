@@ -9,18 +9,9 @@ Authors@R:
 Description: `algocompsynth` is a collection of utilities
     for algorithmic music composition and digital sound synthesis.
 License: MIT + file LICENSE
-Imports: 
-    audio,
-    monitoR,
-    phonTools,
-    seewave,
-    signal,
-    soundecology,
-    soundgen,
-    tuneR,
-    warbleR
 Suggests:
     devtools,
+    miniUI,
     pkgdown,
     testthat
 Encoding: UTF-8

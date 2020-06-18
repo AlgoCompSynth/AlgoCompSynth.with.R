@@ -1,0 +1,9 @@
+#! /bin/bash
+
+sudo docker rm -f rstats
+sudo docker run --detach \
+  --env RSTATS_PASSWORD=$RSTATS_PASSWORD \
+  --volume=$HOME/Projects:/home/rstats/Projects \
+  --network host --name rstats --hostname rstats \
+  znmeb/l4t-rstats:latest
+sudo docker cp $HOME/.ssh rstats:/home/rstats/

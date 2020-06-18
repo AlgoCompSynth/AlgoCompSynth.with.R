@@ -2,10 +2,10 @@
 
 if [ ${#RSTATS_PASSWORD} -ge 12 ]
 then
-  echo "Resetting 'r-audio' password"
-  echo "r-audio:${RSTATS_PASSWORD}" | chpasswd
+  echo "Resetting 'rstats' password"
+  echo "rstats:${RSTATS_PASSWORD}" | chpasswd
 else
-  echo "New 'r-audio' password must be at least 12 bytes!"
+  echo "New 'rstats' password must be at least 12 bytes!"
   echo "Exiting!"
   exit -255
 fi

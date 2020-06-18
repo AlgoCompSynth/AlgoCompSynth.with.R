@@ -6,7 +6,7 @@ apt-get install -qqy --no-install-recommends \
   ant \
   build-essential \
   cmake \
-  git \
+  curl \
   libpam0g-dev \
   libssl-dev \
   openjdk-8-jre-headless \
@@ -14,13 +14,15 @@ apt-get install -qqy --no-install-recommends \
   pandoc \
   pandoc-citeproc \
   r-base-dev \
+  tar \
   time \
   uuid-dev
 
-rm -fr rstudio
-git clone https://github.com/rstudio/rstudio.git && \
-  cd rstudio && \
-  git checkout $RSTUDIO_TAG
+rm -fr rstudio*
+curl -Ls https://github.com/rstudio/rstudio/tarball/$RSTUDIO_TAG \
+  | tar xzf -
+mv rstudio-rstudio-* rstudio
+cd rstudio
 
 # Non-L4t Dependencies
 export PANDOC_VERSION=`pandoc --version|head -n 1|sed 's/^pandoc //'`
@@ -42,11 +44,19 @@ cmake .. \
 
 echo "Packaging"
 
-# use half of `nproc` for make job count
-export CODE="n=`nproc`; n/2"
-echo "'bc' code is $CODE"
-export JOBS=`echo $CODE | bc`
-echo "'make' will use $JOBS jobs"
+# The Nano only has 4 GB of RAM. As a result, the Java builds swamp the available
+# RAM and multi-job makes are problematic - they swap and the system appears
+# unresponsive.
+#
+# So we only run multi-job makes if we have more than 5 GB of RAM.
+export RAM_KILOBYTES=`grep MemTotal /proc/meminfo | sed 's/^MemTotal:  *//' | sed 's/ .*$//'`
+if [ $RAM_KILOBYTES -gt "5000000" ]
+then
+  export JOBS=`nproc`
+else
+  export JOBS=1
+fi
+echo "RAM_KILOBYTES = $RAM_KILOBYTES; 'make' will use $JOBS jobs."
 /usr/bin/time make --jobs=$JOBS package
 
 echo "RStudio Server package tarball is in $SOURCE_DIR/rstudio/build/$PACKAGE_FILE"

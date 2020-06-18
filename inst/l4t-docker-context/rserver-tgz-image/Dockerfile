@@ -1,11 +1,7 @@
-FROM nvcr.io/nvidia/l4t-base:r32.4.2
+FROM scratch
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@znmeb.net>"
 
-ARG DEBIAN_FRONTEND=noninteractive
 ARG SOURCE_DIR=/usr/local/src
-
-ENV PAPERSIZE=letter
-
 ARG RSTUDIO_VERSION_MAJOR=1
 ARG RSTUDIO_VERSION_MINOR=3
 ARG RSTUDIO_VERSION_PATCH=959
@@ -13,9 +9,4 @@ ARG RSTUDIO_VERSION=$RSTUDIO_VERSION_MAJOR.$RSTUDIO_VERSION_MINOR.$RSTUDIO_VERSI
 ARG RSTUDIO_TAG=v$RSTUDIO_VERSION
 ARG PACKAGE_FILE=rstudio-server-$RSTUDIO_VERSION-arm64.tar.gz
 
-USER root
-WORKDIR $SOURCE_DIR/
-
-COPY rstudio-tarball.bash $SOURCE_DIR/
-RUN $SOURCE_DIR/rstudio-tarball.bash > rstudio-tarball.log 2>&1; gzip -9 rstudio-tarball.log
-RUN ls -l $SOURCE_DIR $SOURCE_DIR/rstudio/build/$PACKAGE_FILE
+COPY --from=local-rserver-tgz-image:latest $SOURCE_DIR/rstudio/build/$PACKAGE_FILE $SOURCE_DIR/

@@ -1,7 +1,6 @@
 #! /usr/bin/env Rscript
 
 to_install <- c(
-  "audio",
   "caracas",
   "data.table",
   "devtools",
@@ -9,19 +8,11 @@ to_install <- c(
   "knitcitations",
   "learnr",
   "miniUI",
-  "monitoR",
-  "phonTools",
   "pkgdown",
   "renv",
   "reticulate",
   "rTorch",
-  "seewave",
-  "signal",
-  "soundecology",
-  "soundgen",
-  "tidyverse",
-  "tuneR",
-  "warbleR"
+  "tidyverse"
 )
 install.packages(to_install, quiet = TRUE)
 warnings()

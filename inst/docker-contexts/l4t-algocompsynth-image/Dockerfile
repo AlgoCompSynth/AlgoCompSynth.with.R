@@ -2,6 +2,7 @@ FROM nvcr.io/nvidia/l4t-base:r32.4.2
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@znmeb.net>"
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG BUILDING_DOCKER_IMAGE=yes
 ARG SOURCE_DIR=/usr/local/src
 ENV PAPERSIZE=letter
 

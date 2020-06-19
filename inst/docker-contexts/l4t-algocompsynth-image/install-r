@@ -25,6 +25,7 @@ apt-get install -qqy --no-install-recommends \
   tk-dev \
   unzip \
   wget \
+  zip \
   zlib1g-dev
 apt-get autoremove --purge -y
 apt-get clean
@@ -54,5 +55,5 @@ cp ../R.conf /etc/ld.so.conf.d/
 /sbin/ldconfig
 cd ..
 
-echo "Removing build directories"
+echo "Removing source and build directories"
 rm -fr $R_LATEST build_dir

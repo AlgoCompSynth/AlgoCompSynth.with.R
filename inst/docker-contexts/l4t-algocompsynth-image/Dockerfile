@@ -69,10 +69,8 @@ COPY --chown=algocompsynth:algocompsynth Renviron $HOME/.Renviron
 COPY --chown=algocompsynth:algocompsynth Installers $HOME/Installers
 
 # install dependencies for Python and R packages
-RUN $HOME/Installers/python-apt > $HOME/Installers/python-apt.log 2>&1; \
-  gzip -9 $HOME/Installers/python-apt.log
-RUN $HOME/Installers/R-apt > $HOME/Installers/R-apt.log 2>&1; \
-  gzip -9 $HOME/Installers/R-apt.log
+RUN $HOME/Installers/apt-packages > $HOME/Installers/apt-packages.log 2>&1; \
+  gzip -9 $HOME/Installers/apt-packages.log
 RUN chown -R algocompsynth:algocompsynth $HOME/
 
 ENV PROJECT_HOME=$HOME/Projects
@@ -92,10 +90,6 @@ RUN $HOME/Installers/pip-installs > $HOME/Installers/pip-installs.log 2>&1; \
 # install R packages
 RUN $HOME/Installers/R-installs > $HOME/Installers/R-installs.log 2>&1; \
   gzip -9 $HOME/Installers/R-installs.log
-
-# install PyTorch and torchaudio
-RUN $HOME/Installers/pytorch-audio > $HOME/Installers/pytorch-audio.log 2>&1; \
-  gzip -9 $HOME/Installers/pytorch-audio.log
 
 # switch back to root
 USER root

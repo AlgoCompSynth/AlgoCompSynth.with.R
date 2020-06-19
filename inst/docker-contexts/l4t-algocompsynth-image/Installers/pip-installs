@@ -19,5 +19,6 @@ curl -Ls https://github.com/pytorch/audio/archive/v0.5.0.tar.gz \
 cd audio-0.5.0
 python setup.py install
 cd ..
+rm -fr audio-0.5.0
 
 pip list

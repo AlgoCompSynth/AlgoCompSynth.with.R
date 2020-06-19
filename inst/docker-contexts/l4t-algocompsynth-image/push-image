@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sudo docker push znmeb/l4t-rstats:latest
+sudo docker push znmeb/l4t-algocompsynth:latest

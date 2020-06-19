@@ -11,6 +11,7 @@ apt-get install -qqy --no-install-recommends \
   openjdk-8-jre \
   pandoc \
   pandoc-citeproc \
+  pandoc-citeproc-preamble \
   uuid-dev
 update-alternatives --get-selections
 

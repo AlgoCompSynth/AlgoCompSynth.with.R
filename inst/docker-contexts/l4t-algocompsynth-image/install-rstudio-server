@@ -84,7 +84,7 @@ apt-get install -qqy --no-install-recommends \
 update-alternatives --get-selections
 R CMD javareconf
 
-if [ $BUILDING_DOCKER_IMAGE = "yes" ]
+if [ $BUILDING_DOCKER_IMAGE == "yes" ]
 then
   rm -fr rstudio
   apt-get clean

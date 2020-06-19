@@ -54,7 +54,7 @@ cp ../R.conf /etc/ld.so.conf.d/
 /sbin/ldconfig
 cd ..
 
-if [ $BUILDING_DOCKER_IMAGE = "yes" ]
+if [ $BUILDING_DOCKER_IMAGE == "yes" ]
 then
   echo "Removing source and build directories"
   rm -fr $R_LATEST build_dir

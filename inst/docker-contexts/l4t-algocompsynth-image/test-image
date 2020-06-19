@@ -1,0 +1,9 @@
+#! /bin/bash
+
+sudo docker rm -f algocompsynth
+sudo docker run --detach \
+  --env ALGOCOMPSYNTH_PASSWORD=$ALGOCOMPSYNTH_PASSWORD \
+  --volume=$HOME/Projects:/home/algocompsynth/Projects \
+  --network host --name algocompsynth --hostname algocompsynth \
+  znmeb/l4t-algocompsynth:latest
+sudo docker cp $HOME/.ssh algocompsynth:/home/algocompsynth/

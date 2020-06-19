@@ -4,9 +4,9 @@ echo "Installing tools for building from source"
 apt-get install -qqy --no-install-recommends \
   build-essential \
   curl \
-  default-jdk-headless \
-  default-jre-headless \
   gfortran \
+  git \
+  git-lfs \
   libbz2-dev \
   libcairo2-dev \
   libcurl4-openssl-dev \
@@ -20,8 +20,11 @@ apt-get install -qqy --no-install-recommends \
   libpng-dev \
   libreadline-dev \
   libtiff-dev \
+  tar \
   texinfo \
   tk-dev \
+  unzip \
+  wget \
   zlib1g-dev
 apt-get autoremove --purge -y
 apt-get clean
@@ -45,14 +48,11 @@ cd build_dir
 echo "Compiling"
 make --jobs=`nproc`
 
-echo "Checking"
-make check
-
 echo "Installing"
 make install
 cp ../R.conf /etc/ld.so.conf.d/
 /sbin/ldconfig
 cd ..
 
-echo "Removing build directory"
-rm -fr build_dir
+echo "Removing build directories"
+rm -fr $R_LATEST build_dir

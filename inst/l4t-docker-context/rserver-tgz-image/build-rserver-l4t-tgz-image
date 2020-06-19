@@ -1,9 +1,0 @@
-#! /bin/bash
-
-/usr/bin/time sudo docker build --tag=local-rserver-l4t-tgz-image:latest --file=Dockerfile.local .
-/usr/bin/time sudo docker build \
-  --tag=znmeb/rserver-l4t-tgz-image:latest \
-  --file=Dockerfile .
-sudo docker images
-/usr/bin/time sudo docker push \
-  znmeb/rserver-l4t-tgz-image:latest

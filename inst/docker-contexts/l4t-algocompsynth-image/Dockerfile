@@ -40,11 +40,11 @@ ARG RSTUDIO_VERSION_MAJOR=1
 ARG RSTUDIO_VERSION_MINOR=3
 ARG RSTUDIO_VERSION_PATCH=959
 ARG RSTUDIO_VERSION=$RSTUDIO_VERSION_MAJOR.$RSTUDIO_VERSION_MINOR.$RSTUDIO_VERSION_PATCH
-ARG PACKAGE_FILE=rstudio-server-$RSTUDIO_VERSION-arm64.tar.gz
+ARG RSTUDIO_TAG=v$RSTUDIO_VERSION
 
-COPY --from=znmeb/rserver-l4t-tgz-image $SOURCE_DIR/$PACKAGE_FILE $SOURCE_DIR/ 
-RUN tar --directory=/ --strip-components=1 --verbose --extract --file=$SOURCE_DIR/$PACKAGE_FILE \
-  > install-tarball.log 2>&1; gzip -9 install-tarball.log
+COPY install-rstudio-server $SOURCE_DIR/
+RUN $SOURCE_DIR/install-rstudio-server > install-rstudio-server.log 2>&1; \
+  gzip -9 install-rstudio-server.log
 
 # configure RStudio Server
 COPY rstudio-configure rserver.conf $SOURCE_DIR/
@@ -56,29 +56,29 @@ RUN useradd \
   --user-group \
   --groups sudo \
   --create-home \
-  --uid 1000 rstats \
-  && echo "rstats:rstats" | chpasswd
+  --uid 1000 algocompsynth \
+  && echo "algocompsynth:algocompsynth" | chpasswd
 
 # set up the user
-ARG HOME=/home/rstats
+ARG HOME=/home/algocompsynth
 
-# Populate 'rstats' home
-COPY --chown=rstats:rstats bash_aliases $HOME/.bash_aliases
-COPY --chown=rstats:rstats Rprofile $HOME/.Rprofile
-COPY --chown=rstats:rstats Renviron $HOME/.Renviron
-COPY --chown=rstats:rstats Installers $HOME/Installers
+# Populate 'algocompsynth' home
+COPY --chown=algocompsynth:algocompsynth bash_aliases $HOME/.bash_aliases
+COPY --chown=algocompsynth:algocompsynth Rprofile $HOME/.Rprofile
+COPY --chown=algocompsynth:algocompsynth Renviron $HOME/.Renviron
+COPY --chown=algocompsynth:algocompsynth Installers $HOME/Installers
 
 # install dependencies for Python and R packages
 RUN $HOME/Installers/python-apt > $HOME/Installers/python-apt.log 2>&1; \
   gzip -9 $HOME/Installers/python-apt.log
 RUN $HOME/Installers/R-apt > $HOME/Installers/R-apt.log 2>&1; \
   gzip -9 $HOME/Installers/R-apt.log
-RUN chown -R rstats:rstats $HOME/
+RUN chown -R algocompsynth:algocompsynth $HOME/
 
 ENV PROJECT_HOME=$HOME/Projects
 ENV WORKON_HOME=$HOME/.virtualenvs
 
-USER rstats
+USER algocompsynth
 WORKDIR $HOME/
 
 # set up Python virtulaenv and R library
@@ -92,6 +92,10 @@ RUN $HOME/Installers/pip-installs > $HOME/Installers/pip-installs.log 2>&1; \
 # install R packages
 RUN $HOME/Installers/R-installs > $HOME/Installers/R-installs.log 2>&1; \
   gzip -9 $HOME/Installers/R-installs.log
+
+# install PyTorch and torchaudio
+RUN $HOME/Installers/pytorch-audio > $HOME/Installers/pytorch-audio.log 2>&1; \
+  gzip -9 $HOME/Installers/pytorch-audio.log
 
 # switch back to root
 USER root

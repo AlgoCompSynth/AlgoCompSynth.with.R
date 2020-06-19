@@ -3,7 +3,5 @@
 sudo docker rm -f algocompsynth
 sudo docker run --detach \
   --env ALGOCOMPSYNTH_PASSWORD=$ALGOCOMPSYNTH_PASSWORD \
-  --volume=$HOME/Projects:/home/algocompsynth/Projects \
-  --volume=$HOME/.ssh:/home/algocompsynth/.ssh \
   --network host --name algocompsynth --hostname algocompsynth \
   znmeb/l4t-algocompsynth:latest

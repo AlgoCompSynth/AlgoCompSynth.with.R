@@ -3,6 +3,12 @@
 source $WORKON_HOME/r-reticulate/bin/activate
 alias make="make --jobs=`nproc`"
 
+echo "Installing PyTorch"
+# https://forums.developer.nvidia.com/t/pytorch-for-jetson-nano-version-1-5-0-now-available/72048
+wget -q https://nvidia.box.com/shared/static/3ibazbiwtkl181n95n9em3wtrca7tdzp.whl \
+  -O /tmp/torch-1.5.0-cp36-cp36m-linux_aarch64.whl
+pip install --upgrade /tmp/torch-1.5.0-cp36-cp36m-linux_aarch64.whl
+
 echo "Installing PyTorch audio v0.5.0 from source"
 curl -Ls https://github.com/pytorch/audio/archive/v0.5.0.tar.gz \
   | tar xzf -
@@ -12,3 +18,6 @@ cd ..
 rm -fr audio-0.5.0
 
 pip list
+
+echo "Installing 'rTorch'"
+Rscript -e "install.packages('rTorch', quiet = TRUE)"

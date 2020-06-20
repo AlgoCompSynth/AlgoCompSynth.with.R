@@ -11,7 +11,6 @@ to_install <- c(
   "pkgdown",
   "renv",
   "reticulate",
-  "rTorch",
   "tidyverse"
 )
 install.packages(to_install, quiet = TRUE)

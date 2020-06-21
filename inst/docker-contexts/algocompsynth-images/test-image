@@ -4,4 +4,4 @@ sudo docker rm -f algocompsynth
 sudo docker run --detach \
   --env ALGOCOMPSYNTH_PASSWORD=$ALGOCOMPSYNTH_PASSWORD \
   --network host --name algocompsynth --hostname algocompsynth \
-  znmeb/l4t-algocompsynth:latest
+  $ALGOCOMPSYNTH_IMAGE

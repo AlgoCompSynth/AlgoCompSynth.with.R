@@ -1,7 +1,5 @@
 #! /bin/bash
 
-set -e
-
 sudo docker rm -f algocompsynth
 sudo docker run --detach \
   --env ALGOCOMPSYNTH_PASSWORD=$ALGOCOMPSYNTH_PASSWORD \

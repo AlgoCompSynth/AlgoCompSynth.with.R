@@ -3,7 +3,13 @@
 set -e
 
 sudo docker login
-if [ `uname -m` == "x86_64" ]
+sudo docker images
+
+# push Bionic image
+/usr/bin/time sudo docker push "znmeb/algocompsynth-`uname -m`-bionic:latest"
+
+# push L4T image on Tegra host only
+if [ `uname -r | grep tegra | wc -l` -gt "0" ]
 then
-  sudo docker push znmeb/algocompsynth-x86_64-bionic:latest
+  /usr/bin/time sudo docker push "znmeb/algocompsynth-jetson-l4t:latest"
 fi

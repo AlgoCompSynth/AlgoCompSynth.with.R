@@ -102,3 +102,6 @@ WORKDIR $SOURCE_DIR/
 # set up entry point
 COPY docker-entrypoint.sh /
 CMD [ "/docker-entrypoint.sh" ]
+
+# copy test scripts to image
+COPY --chown=algocompsynth:algocompsynth TestScripts $ALGOCOMPSYNTH_HOME/TestScripts

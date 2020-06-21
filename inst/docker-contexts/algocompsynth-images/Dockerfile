@@ -16,7 +16,7 @@ ARG ALGOCOMPSYNTH_HOME=/home/algocompsynth
 
 # environment variables on image
 ENV PAPERSIZE=letter
-ENV PROJECT__HOME=$ALGOCOMPSYNTH_HOME/Projects
+ENV PROJECT_HOME=$ALGOCOMPSYNTH_HOME/Projects
 ENV WORKON_HOME=$ALGOCOMPSYNTH_HOME/.virtualenvs
 
 # image building

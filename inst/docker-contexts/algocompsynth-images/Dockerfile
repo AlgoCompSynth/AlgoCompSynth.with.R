@@ -47,12 +47,12 @@ RUN locale-gen en_US.UTF-8 \
 
 # install R
 COPY install-r R.conf $SOURCE_DIR/
-RUN $SOURCE_DIR/install-r > install-r.log 2>&1; \
+RUN $SOURCE_DIR/install-r > install-r.log 2>&1 && \
   gzip -9 install-r.log
 
 # install RStudio Server
 COPY install-rstudio-server $SOURCE_DIR/
-RUN $SOURCE_DIR/install-rstudio-server > install-rstudio-server.log 2>&1; \
+RUN $SOURCE_DIR/install-rstudio-server > install-rstudio-server.log 2>&1 && \
   gzip -9 install-rstudio-server.log
 
 # configure RStudio Server
@@ -75,7 +75,7 @@ COPY --chown=algocompsynth:algocompsynth Renviron $ALGOCOMPSYNTH_HOME/.Renviron
 COPY --chown=algocompsynth:algocompsynth Installers $ALGOCOMPSYNTH_HOME/Installers
 
 # install dependencies for Python and R packages
-RUN $ALGOCOMPSYNTH_HOME/Installers/apt-packages > $ALGOCOMPSYNTH_HOME/Installers/apt-packages.log 2>&1; \
+RUN $ALGOCOMPSYNTH_HOME/Installers/apt-packages > $ALGOCOMPSYNTH_HOME/Installers/apt-packages.log 2>&1 && \
   gzip -9 $ALGOCOMPSYNTH_HOME/Installers/apt-packages.log
 RUN chown -R algocompsynth:algocompsynth $ALGOCOMPSYNTH_HOME/
 
@@ -84,15 +84,15 @@ USER algocompsynth
 WORKDIR $ALGOCOMPSYNTH_HOME/
 
 # set up Python virtulaenv and R library
-RUN $ALGOCOMPSYNTH_HOME/Installers/create-venvs > $ALGOCOMPSYNTH_HOME/Installers/create-venvs.log 2>&1; \
+RUN $ALGOCOMPSYNTH_HOME/Installers/create-venvs > $ALGOCOMPSYNTH_HOME/Installers/create-venvs.log 2>&1 && \
   gzip -9 $ALGOCOMPSYNTH_HOME/Installers/create-venvs.log
 
 # install Python packages
-RUN $ALGOCOMPSYNTH_HOME/Installers/pip-installs > $ALGOCOMPSYNTH_HOME/Installers/pip-installs.log 2>&1; \
+RUN $ALGOCOMPSYNTH_HOME/Installers/pip-installs > $ALGOCOMPSYNTH_HOME/Installers/pip-installs.log 2>&1 && \
   gzip -9 $ALGOCOMPSYNTH_HOME/Installers/pip-installs.log
 
 # install R packages
-RUN $ALGOCOMPSYNTH_HOME/Installers/R-installs > $ALGOCOMPSYNTH_HOME/Installers/R-installs.log 2>&1; \
+RUN $ALGOCOMPSYNTH_HOME/Installers/R-installs > $ALGOCOMPSYNTH_HOME/Installers/R-installs.log 2>&1 && \
   gzip -9 $ALGOCOMPSYNTH_HOME/Installers/R-installs.log
 
 # switch back to root

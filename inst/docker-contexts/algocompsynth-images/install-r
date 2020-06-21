@@ -3,10 +3,7 @@
 echo "Installing tools for building from source"
 apt-get install -qqy --no-install-recommends \
   build-essential \
-  curl \
   gfortran \
-  git \
-  git-lfs \
   libbz2-dev \
   libcairo2-dev \
   libcurl4-openssl-dev \
@@ -20,12 +17,8 @@ apt-get install -qqy --no-install-recommends \
   libpng-dev \
   libreadline-dev \
   libtiff-dev \
-  tar \
   texinfo \
   tk-dev \
-  unzip \
-  wget \
-  zip \
   zlib1g-dev
 apt-get autoremove --purge -y
 
@@ -35,8 +28,8 @@ mkdir -p $SOURCE_DIR && cd $SOURCE_DIR
 echo "Removing old R source directories"
 rm -fr R-*
 
-echo "Downloading source"
-curl -Ls https://cloud.r-project.org/src/base/R-latest.tar.gz | gzip -dc | tar xf -
+echo "Downloading $R_SOURCE_TARBALL"
+curl -Ls $R_SOURCE_TARBALL | tar xzf -
 export R_LATEST=`ls -1 | grep -e "^R-"`
 echo "Using $R_LATEST"
 

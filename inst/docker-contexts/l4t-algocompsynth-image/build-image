@@ -1,4 +1,0 @@
-#! /bin/bash
-
-/usr/bin/time sudo docker build --tag=znmeb/l4t-algocompsynth:latest --file=Dockerfile .
-sudo docker images

@@ -16,7 +16,8 @@ apt-get install -qqy --no-install-recommends \
 update-alternatives --get-selections
 
 rm -fr rstudio*
-curl -Ls https://github.com/rstudio/rstudio/tarball/$RSTUDIO_TAG \
+curl -Ls \
+  https://github.com/rstudio/rstudio/tarball/v$RSTUDIO_VERSION_MAJOR.$RSTUDIO_VERSION_MINOR.$RSTUDIO_VERSION_PATCH \
   | tar xzf -
 mv rstudio-rstudio-* rstudio
 cd rstudio

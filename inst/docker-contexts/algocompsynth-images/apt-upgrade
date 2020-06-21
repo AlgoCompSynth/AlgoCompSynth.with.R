@@ -6,8 +6,10 @@ echo "Installing command line basics"
 apt-get install -qqy --no-install-recommends \
   bash-completion \
   bzip2 \
+  ca-certificates \
   curl \
   git \
+  git-lfs \
   gzip \
   locales \
   sudo \

@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 sudo docker login
 if [ `uname -m` == "x86_64" ]
 then

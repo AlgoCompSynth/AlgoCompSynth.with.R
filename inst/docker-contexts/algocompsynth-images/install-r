@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 echo "Installing tools for building from source"
 apt-get install -qqy --no-install-recommends \
   build-essential \

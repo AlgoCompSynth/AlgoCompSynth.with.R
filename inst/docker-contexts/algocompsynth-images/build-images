@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 # build Bionic image
 /usr/bin/time sudo docker build \
   --build-arg BASE_IMAGE="ubuntu:bionic" \

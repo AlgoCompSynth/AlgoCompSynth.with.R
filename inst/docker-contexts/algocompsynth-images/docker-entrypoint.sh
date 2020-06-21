@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+set -e
+
 if [ ${#ALGOCOMPSYNTH_PASSWORD} -ge 12 ]
 then
   echo "Resetting 'algocompsynth' password"

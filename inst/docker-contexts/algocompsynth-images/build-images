@@ -23,5 +23,17 @@ then
     --tag="znmeb/algocompsynth-jetson-l4t:latest" --file=Dockerfile .
 fi
 
+# Build "cuda" image on x86_64 host with CUDA only
+if [ `uname -m` == "x86_64" -a -x `which nvcc` ]
+then
+  /usr/bin/time sudo docker build \
+    --build-arg BASE_IMAGE="nvcr.io/nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04" \
+    --build-arg R_SOURCE_TARBALL="https://cloud.r-project.org/src/base/R-4/R-4.0.1.tar.gz" \
+    --build-arg RSTUDIO_VERSION_MAJOR=1 \
+    --build-arg RSTUDIO_VERSION_MINOR=3 \
+    --build-arg RSTUDIO_VERSION_PATCH=959 \
+    --tag="znmeb/algocompsynth-`uname -m`-cuda:latest" --file=Dockerfile .
+fi
+
 docker system prune
 sudo docker images

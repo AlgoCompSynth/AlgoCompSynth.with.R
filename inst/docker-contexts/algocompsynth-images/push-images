@@ -16,5 +16,6 @@ fi
 
 # push "cuda" image only on x86_64 host with CUDA
 if [ `uname -m` == "x86_64" -a -x `which nvcc` ]
+then
   /usr/bin/time sudo docker push "znmeb/algocompsynth-`uname -m`-cuda:latest"
 fi

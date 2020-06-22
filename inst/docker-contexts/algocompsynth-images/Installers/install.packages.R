@@ -1,14 +1,7 @@
 #! /usr/bin/env Rscript
 
 to_install <- c(
-  "caracas",
   "data.table",
-  "devtools",
-  "DiagrammeR",
-  "knitcitations",
-  "learnr",
-  "miniUI",
-  "pkgdown",
   "renv",
   "reticulate",
   "tidyverse"

@@ -5,7 +5,7 @@ set -e
 source $WORKON_HOME/r-reticulate/bin/activate
 alias make="make --jobs=`nproc`"
 
-echo "Installing 'Cython', 'numpy' and 'SymPy'"
-/usr/bin/time pip install --upgrade Cython numpy SymPy
+echo "Installing 'numpy'"
+/usr/bin/time pip install --upgrade numpy
 
 pip list

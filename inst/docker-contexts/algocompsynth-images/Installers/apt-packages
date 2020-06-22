@@ -4,16 +4,8 @@ set -e
 
 echo "Installing Linux dependencies"
 apt-get install -qqy --no-install-recommends \
-  hdf5-tools \
-  libffi-dev \
   libfftw3-dev \
-  libhdf5-dev \
-  libhdf5-serial-dev \
-  libjpeg8-dev \
-  libopenblas-base \
-  libopenmpi-dev \
   libsndfile1-dev \
-  libsodium-dev \
   libsox-dev \
   libsox-fmt-all \
   libsoxr-dev \
@@ -29,8 +21,7 @@ apt-get install -qqy --no-install-recommends \
   sndfile-tools \
   sox \
   virtualenv \
-  virtualenvwrapper \
-  zlib1g-dev
+  virtualenvwrapper
 apt-get autoremove --purge -y
 
 if [ $BUILDING_DOCKER_IMAGE == "yes" ]

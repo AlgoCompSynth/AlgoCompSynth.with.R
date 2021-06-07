@@ -1,14 +1,21 @@
-Package: algocompsynth
-Title: Algorithmic Composition and Synthesis
+Package: AlgoCompSynth.with.R
+Title: Algorithmic Composition and Synthesis with R
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "M. Edward (Ed)",
            family = "Borasky",
            role = c("aut", "cre"),
            email = "znmebt@znmeb.net")
-Description: `algocompsynth` is a collection of utilities
-    for algorithmic music composition and digital sound synthesis.
+Description: The goal of `AlgoCompSynth.with.R` is to provide R functions for
+    algorithmic music composition and digital sound synthesis.
+    `AlgoCompSynth.with.R` extends the packages documented in [Sueur, Jérôme
+    (2018), _Sound Analysis and Synthesis with 
+    R_](https://www.springer.com/us/book/9783319776453) with functions for
+    xentonal composition as described in [Sethares, William A. (2005), _Tuning,
+    Timbre, Spectrum, Scale, Second
+    Edition_](https://www.springer.com/us/book/9781852337971).
 License: MIT + file LICENSE
+Depends: R (>= 4.1.0)
 Suggests:
     audio,
     devtools,

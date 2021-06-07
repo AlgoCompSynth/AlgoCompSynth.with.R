@@ -21,8 +21,8 @@ Edition*](https://www.springer.com/us/book/9781852337971).
 ## Installation
 
 You can install `AlgoCompSynth.with.R` from
-[GitHub](https://github.com/AlgoCompSynth/algocompsynth_r) with:
+[GitHub](https://github.com/AlgoCompSynth/AlgoCompSynth.with.R) with:
 
 ``` r
-remotes::install_.packages_github("AlgoCompSynth/algocompsynth_r")
+remotes::install_.packages_github("AlgoCompSynth/AlgoCompSynth.with.R")
 ```
